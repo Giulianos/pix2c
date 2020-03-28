@@ -1,5 +1,6 @@
 import numpy as np
 import tkinter as tk
+import sys
 
 from matrix import Matrix
 
@@ -35,7 +36,13 @@ def copy_code():
     root.update()
     print(str)
 
-pixel_matrix = Matrix(root)
+cols = 5
+rows = 5
+if len(sys.argv) == 3:
+    rows = int(sys.argv[1])
+    cols = int(sys.argv[2])
+
+pixel_matrix = Matrix(root, (rows, cols))
 pixel_matrix.pack()
 
 copy_button = tk.Button(text='Copy code', command=copy_code)

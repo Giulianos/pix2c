@@ -2,15 +2,16 @@ import tkinter as tk
 import numpy as np
 
 class Matrix(tk.Frame):
-    def __init__(self, parent):
+    def __init__(self, parent, size):
         tk.Frame.__init__(self, parent)
-        self.pixels = np.array([[False for i in range(0,5)] for j in range(0,5)])
+        rows, cols = size
+        self.pixels = np.array([[False for i in range(0,cols)] for j in range(0,rows)])
         print(self.pixels)
 
         self.buttons = []
-        for row in range(0, 5):
+        for row in range(0, rows):
             self.buttons.append([])
-            for col in range(0, 5):
+            for col in range(0, cols):
                 button = tk.Button(self, text=' ', bg='black', command=lambda r=row, c=col: self.on_click(r, c))
                 button.grid(row=row, column=col)
                 self.buttons[row].append(button)
